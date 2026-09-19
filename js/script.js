@@ -263,22 +263,84 @@ clickableElements.forEach(element => {
    MUSIC
 ===================================================== */
 
+// const music = document.getElementById("weddingMusic");
+// const musicBtn = document.getElementById("musicBtn");
+
+
+// let musicPlaying = false;
+
+
+// /*
+//    Browsers commonly block autoplay with sound.
+
+//    We attempt autoplay first.
+//    If blocked, music starts after the user's first
+//    interaction.
+// */
+
+// async function startMusic() {
+
+//     try {
+
+//         await music.play();
+
+//         musicPlaying = true;
+
+//         musicBtn.classList.add("playing");
+
+//     } catch (error) {
+
+//         console.log(
+//             "Autoplay blocked. Waiting for user interaction."
+//         );
+
+//     }
+
+// }
+
+
+// /* Try autoplay */
+
+// window.addEventListener("load", () => {
+
+//     startMusic();
+
+// });
+
+
+// /* Start music after first interaction */
+
+// document.addEventListener(
+//     "click",
+//     () => {
+
+//         if (!musicPlaying) {
+//             startMusic();
+//         }
+
+//     },
+//     {
+//         once: true
+//     }
+// );
+
+
+/* Music button */
+/* =====================================================
+   MUSIC AUTOPLAY
+===================================================== */
+
 const music = document.getElementById("weddingMusic");
 const musicBtn = document.getElementById("musicBtn");
-
 
 let musicPlaying = false;
 
 
-/*
-   Browsers commonly block autoplay with sound.
+/* =====================================================
+   PLAY MUSIC
+===================================================== */
 
-   We attempt autoplay first.
-   If blocked, music starts after the user's first
-   interaction.
-*/
-
-async function startMusic() {
+async function playMusic() {
 
     try {
 
@@ -288,61 +350,9 @@ async function startMusic() {
 
         musicBtn.classList.add("playing");
 
+        console.log("Wedding music started.");
+
     } catch (error) {
-
-        console.log(
-            "Autoplay blocked. Waiting for user interaction."
-        );
-
-    }
-
-}
-
-
-/* Try autoplay */
-
-window.addEventListener("load", () => {
-
-    startMusic();
-
-});
-
-
-/* Start music after first interaction */
-
-document.addEventListener(
-    "click",
-    () => {
-
-        if (!musicPlaying) {
-            startMusic();
-        }
-
-    },
-    {
-        once: true
-    }
-);
-
-
-/* Music button */
-
-musicBtn.addEventListener("click", async event => {
-
-    event.stopPropagation();
-
-
-    if (music.paused) {
-
-        try {
-
-            await music.play();
-
-            musicPlaying = true;
-
-            musicBtn.classList.add("playing");
-
-        } catch (error) {
 
         /*
          * Browser blocked autoplay.
@@ -396,7 +406,9 @@ musicBtn.addEventListener("click", async (event) => {
     event.stopPropagation();
 
 
-        }
+    if (music.paused) {
+
+        await playMusic();
 
     } else {
 
