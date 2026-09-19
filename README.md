@@ -77,15 +77,15 @@ js/script.js
 Open:
 index.html
 Search for:
-Nikhil
+Dipjyoti
 and:
-Tanvi
+Bornali
 You will find them in multiple places.
 For example:
 <h1>
-    Nikhil
+    Dipjyoti
     <span>&</span>
-    Tanvi
+    Bornali
 </h1>
 Change to:
 
