@@ -344,7 +344,57 @@ musicBtn.addEventListener("click", async event => {
 
         } catch (error) {
 
-            console.log("Unable to play music.");
+        /*
+         * Browser blocked autoplay.
+         * Music will start after the user's first interaction.
+         */
+
+        console.log(
+            "Autoplay was blocked. Waiting for user interaction."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TRY TO PLAY AUTOMATICALLY WHEN PAGE LOADS
+===================================================== */
+
+window.addEventListener("load", () => {
+
+    playMusic();
+
+});
+
+
+/* =====================================================
+   FALLBACK
+   If browser blocks autoplay, start music when
+   the visitor first interacts with the page.
+===================================================== */
+
+document.addEventListener("click", () => {
+
+    if (music.paused) {
+
+        playMusic();
+
+    }
+
+}, { once: true });
+
+
+/* =====================================================
+   MUSIC BUTTON
+   Button can still pause/play music manually.
+===================================================== */
+
+musicBtn.addEventListener("click", async (event) => {
+
+    event.stopPropagation();
+
 
         }
 
@@ -359,7 +409,6 @@ musicBtn.addEventListener("click", async event => {
     }
 
 });
-
 
 /* =====================================================
    HERO VIDEO
